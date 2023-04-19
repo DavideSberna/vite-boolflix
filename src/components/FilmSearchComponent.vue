@@ -7,6 +7,7 @@
                     <div class="col-3" v-for="films in store.searchFilms">
                         <div class="card">
                             {{ films.original_title}}
+                            
                         </div>
                     </div>
                 </div>
