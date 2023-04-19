@@ -1,0 +1,43 @@
+1. creare interfaccia grafica con header, main, footer
+     - creare header nav con input text e button submit 
+     - creare main con overflow
+     - creare footer  
+
+2. creare componenti da appendere ad App.vue
+     - navComponent.vue
+           - searchComponent.vue
+
+     - contentComponent.vue
+          -filmsSearchComponent.vue
+               - filmComponent.vue
+                    -bodyFilmComponent.vue
+
+          -seriesSearchComponent.vue
+               - seriesComponent.vue
+                    -bodyseriesComponent.vue
+
+          -filmsPopularComponent.vue
+               - filmPopularComponent.vue
+                    -bodyFilmComponent.vue
+
+          -seriesPopularComponent.vue
+               - seriesPopularComponent.vue
+                    -bodyseriesComponent.vue
+
+     - footerComponents.vue
+          
+3. Creare variabile store (store.js) con al suo interno:
+     - n array = [] (verra pushato l'object API di n)
+     - n urlBase = 'https: //'
+     - n endPoint = ''
+     - mostfilmsPopular: false,
+     - mostseriesPopular: false,
+
+     Creare input v-model per la ricerca
+     - property search:{
+        nameFilm: '',
+        nameSeries: '',
+     }
+
+4. in App.vue inizializzare in methods un metodo per creare l'API, quindi:
+     - 
