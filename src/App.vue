@@ -3,11 +3,6 @@
 <template>
     <div>
         <allComponent/>
-        <!-- <div>
-            <ul>
-                <li v-for="films in store.searchFilms">{{ films.original_title}}</li>
-            </ul>     
-        </div> -->
     </div>
 </template>
 
@@ -15,6 +10,7 @@
 
 <script>
 import { store } from './data/store';
+import { activity } from './data/activity';
 import axios from 'axios';
 import allComponent from './components/allComponent.vue'
 export default{
@@ -25,11 +21,12 @@ export default{
     data(){
         return{
             store,
+            activity,
 
         }
     },
     mounted(){
-        store.getFilms()
+        activity.getFilms()
     }
 
 }

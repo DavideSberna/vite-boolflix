@@ -5,6 +5,9 @@ import axios from 'axios';
 export const store = reactive({
     searchFilms:[],
     searchSeries:[],
+    filmsPopular:[],
+    seriesPopular:[],
+    show: false,
     imagePath: 'https://image.tmdb.org/t/p/',
     imgSize: 'w342',
     baseUrl: 'https://api.themoviedb.org/3/',
@@ -16,6 +19,7 @@ export const store = reactive({
             movie: 'movie',
             tv: 'tv',
             search: 'search/',
+            popular: 'popular',
             
         },
     search:{
@@ -28,59 +32,107 @@ export const store = reactive({
         'ru',
         'ja',
     ],
-    
-    getSeries(){
-        let url = this.baseUrl + this.endPoint.search + this.endPoint.tv;
-        let option= {}
-        let params= {}
+    // getSeriesPopular(){
+    //     let url = this.baseUrl + this.endPoint.tv +'/'+ this.endPoint.popular;
+        
+    //     let option= {}
+    //     let params= {}
 
-        for(let key in this.queryString){
-            if(this.queryString[key]){
-                params[key] = this.queryString[key]
-            }
-        }
+    //     for(let key in this.queryString){
+    //         if(this.queryString[key]){
+    //             params[key] = this.queryString[key]
+    //         }
+    //     }
 
-        if(Object.keys(params).length > 0){
-            option.params = params
-        }
+    //     if(Object.keys(params).length > 0){
+    //         option.params = params
+    //     }
+       
 
-        axios.get(url, option).then((res) => {
-            this.searchSeries = res.data.results
-        })
+    //     axios.get(url, option).then((res) => {
+    //         this.seriesPopular = res.data.results
+    //         console.log(this.seriesPopular)
+            
+    //     })
 
 
 
-    },
-    getFilms() {
-        let url = this.baseUrl + this.endPoint.search + this.endPoint.movie;
-        let option= {}
-        let params= {}
+    // },
+    // getFilmsPopular(){
+    //     let url = this.baseUrl + this.endPoint.movie +'/'+ this.endPoint.popular;
+       
+    //     let option= {}
+    //     let params= {}
 
-        for(let key in this.queryString){
-            if(this.queryString[key]){
-                params[key] = this.queryString[key]
-            }
-        }
-        console.log(this.queryString)
-        if(Object.keys(params).length > 0){
-            option.params = params
-        }
+    //     for(let key in this.queryString){
+    //         if(this.queryString[key]){
+    //             params[key] = this.queryString[key]
+    //         }
+    //     }
 
-        axios.get(url, option).then((res) => {
-            this.searchFilms = res.data.results 
-        });
+    //     if(Object.keys(params).length > 0){
+    //         option.params = params
+    //     }
+       
+
+    //     axios.get(url, option).then((res) => {
+    //         this.filmsPopular = res.data.results
+           
+    //     })
+
+
+
+    // },
+    // getSeries(){
+
+    //     let url = this.baseUrl + this.endPoint.search + this.endPoint.tv;
+    //     let option= {}
+    //     let params= {}
+
+    //     for(let key in this.queryString){
+    //         if(this.queryString[key]){
+    //             params[key] = this.queryString[key]
+    //         }
+    //     }
+
+    //     if(Object.keys(params).length > 0){
+    //         option.params = params
+    //     }
+
+    //     axios.get(url, option).then((res) => {
+    //         this.searchSeries = res.data.results
+    //     })
+
+
+
+    // },
+    // getFilms() {
+    //     let url = this.baseUrl + this.endPoint.search + this.endPoint.movie;
+    //     let option= {}
+    //     let params= {}
+
+    //     for(let key in this.queryString){
+    //         if(this.queryString[key]){
+    //             params[key] = this.queryString[key]
+    //         }
+    //     }
+    //     console.log(this.queryString)
+    //     if(Object.keys(params).length > 0){
+    //         option.params = params
+    //     }
+
+    //     axios.get(url, option).then((res) => {
+    //         this.searchFilms = res.data.results 
+    //     });
             
 
-        },
-    getData(){
-        this.getFilms();
-        this.getSeries()
-    }
+    //     },
+    // getData(){
+    //     this.show = true
+    //     this.getFilms();
+    //     this.getSeries()
+    // }
 
     
     
 })
-
-
-
-// https://api.themoviedb.org/3/search/movie?api_key=762cdc479ddd3e209057937a020a8609&language=en&query=1

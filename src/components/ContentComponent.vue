@@ -1,18 +1,21 @@
 <template>
     <section>
         <div class="container">
-            <div>
-                <FilmSearchComponent/>
+            <div v-show="store.show">
+                <div>
+                    <FilmSearchComponent/>
+                </div>
+                <div>
+                    <SeriesSearchComponent/>
+                </div>
             </div>
+            
             <div>
-                <SeriesSearchComponent/>
-            </div>
-            <!-- <div>
                 <FilmsPopular/>
             </div>
             <div>
                 <SeriesPopular/>
-            </div> -->
+            </div>
         </div>
     </section>
 </template>
@@ -20,6 +23,8 @@
 
 
 <script>
+import { store } from '../data/store';
+import { activity } from '../data/activity';
 import FilmSearchComponent from './FilmSearchComponent.vue';
 import SeriesSearchComponent from './SeriesSearchComponent.vue'
 import FilmsPopular from './FilmsPopular.vue'
@@ -34,9 +39,16 @@ export default{
     },
     data(){
         return{
+            store,
+            activity,
 
         }
+    },
+    mounted(){
+        activity.getSeriesPopular();
+        activity.getFilmsPopular();
     }
+     
 
 }
  

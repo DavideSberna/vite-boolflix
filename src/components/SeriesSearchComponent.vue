@@ -42,12 +42,14 @@
 
 
 <script>
+import { activity } from '../data/activity';
 import { store } from '../data/store';
 export default{
     name: 'SeriesSearchComponent',
     data(){
         return{
             store,
+            activity,
 
         }
     },
@@ -71,7 +73,7 @@ export default{
 
      },
      mounted(){
-        store.getFilms()
+        activity.getFilms()
          
     }
 

@@ -5,8 +5,8 @@
                 <h3>NetFlix</h3>
             </div>
             <div class="input-group w-input">
-                <input type="text" class="form-control" placeholder="Username" v-model="store.queryString.query"  @keyup.enter="store.getData()">
-                <button type="button" class="btn btn-primary" @click="store.getData()">Primary</button>
+                <input type="text" class="form-control" placeholder="Username" v-model="store.queryString.query"  @keyup.enter="activity.getData()">
+                <button type="button" class="btn btn-primary" @click="activity.getData()">Primary</button>
             </div>
         </div>
    </section>
@@ -16,22 +16,24 @@
 
 <script>
 import { store } from '../data/store';
+import { activity } from '../data/activity';
 export default{
     name: 'NavComponent',
     data(){
         return{
             store,
+            activity,
 
         }
     },
     methods:{
         click(){
-            store.getFilms()
+            activity.getFilms()
         }
 
     },
     mounted(){
-        store.getFilms()
+        activity.getFilms()
     }
 
 }
