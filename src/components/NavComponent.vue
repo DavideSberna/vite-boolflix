@@ -6,7 +6,7 @@
             </div>
             <div class="input-group w-input">
                 <input type="text" class="form-control" placeholder="Username" v-model="store.queryString.query">
-                <button type="button" class="btn btn-primary" @click="store.getFilms()">Primary</button>
+                <button type="button" class="btn btn-primary" @click="store.getData()">Primary</button>
             </div>
         </div>
    </section>

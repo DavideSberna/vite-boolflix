@@ -1,17 +1,19 @@
 <template>
-    <section class="container">
-        <div>
-            <FilmSearchComponent/>
+    <section>
+        <div class="container">
+            <div>
+                <FilmSearchComponent/>
+            </div>
+            <div>
+                <SeriesSearchComponent/>
+            </div>
+            <!-- <div>
+                <FilmsPopular/>
+            </div>
+            <div>
+                <SeriesPopular/>
+            </div> -->
         </div>
-        <!-- <div>
-            <SeriesSearchComponent/>
-        </div>
-        <div>
-            <FilmsPopular/>
-        </div>
-        <div>
-            <SeriesPopular/>
-        </div> -->
     </section>
 </template>
 
