@@ -5,7 +5,7 @@
                 <h3>NetFlix</h3>
             </div>
             <div class="input-group w-input">
-                <input type="text" class="form-control" placeholder="Username" v-model="store.queryString.query">
+                <input type="text" class="form-control" placeholder="Username" v-model="store.queryString.query"  @keyup.enter="store.getData()">
                 <button type="button" class="btn btn-primary" @click="store.getData()">Primary</button>
             </div>
         </div>
