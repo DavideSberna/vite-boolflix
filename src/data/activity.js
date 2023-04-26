@@ -1,107 +1,59 @@
 import { reactive } from 'vue';
-import axios from 'axios';
 import {store} from '../data/store'
 
 export const activity = reactive({
+    showOverView: false,
+    showBadge: true,
+     
 
-    getSeriesPopular(){
-        let url = store.baseUrl + store.endPoint.tv +'/'+ store.endPoint.popular;
+    flagCheck(setLanguage){
+        if(store.flagPath.includes(setLanguage)){
+            return setLanguage
+        }else{
+            return 'flag'
+        }
+    },
+     
+    openOverview(){
         
-        let option= {}
-        let params= {}
-
-        for(let key in store.queryString){
-            if(store.queryString[key]){
-                params[key] = store.queryString[key]
-            }
-        }
-
-        if(Object.keys(params).length > 0){
-            option.params = params
-        }
-       
-
-        axios.get(url, option).then((res) => {
-            store.seriesPopular = res.data.results
-            console.log(store.seriesPopular)
-            
-        })
-
-
-
+        this.showOverView = !this.showOverView;
     },
-    getFilmsPopular(){
-        let url = store.baseUrl + store.endPoint.movie +'/'+ store.endPoint.popular;
-       
-        let option= {}
-        let params= {}
-
-        for(let key in store.queryString){
-            if(store.queryString[key]){
-                params[key] = store.queryString[key]
+    titleSubstring(title){
+        
+        if(title.length > 30){
+            if(screen.width <= 768){
+                return title.substring(0, 40) + '...'
+            } else if(screen.width <= 998){
+                return title.substring(0, 30) + '...'
+            } else{
+                return title
             }
+        } else {
+            return title
         }
-
-        if(Object.keys(params).length > 0){
-            option.params = params
+     
+    
+    
+},
+widthScreen(overview){
+     
+    if(overview.length > 40){
+        if(screen.width <= 768){
+            return overview.substring(0, 65) + '...';
+        } else if(screen.width <= 998){
+            return overview.substring(0, 40) + '...';
+        } else if(screen.width <= 1200){
+            return overview.substring(0, 200) + '...';
+        } else if(screen.width <= 1400){
+            return overview.substring(0, 400) + '...';
+        } else{
+            this.showBadge = false;
+            return overview;
         }
-       
+    } else {
+        this.showBadge = false;
+        return overview;
+    }  
 
-        axios.get(url, option).then((res) => {
-            store.filmsPopular = res.data.results
-           
-        })
-
-
-
-    },
-    getSeries(){
-
-        let url = store.baseUrl + store.endPoint.search + store.endPoint.tv;
-        let option= {}
-        let params= {}
-
-        for(let key in store.queryString){
-            if(store.queryString[key]){
-                params[key] = store.queryString[key]
-            }
-        }
-
-        if(Object.keys(params).length > 0){
-            option.params = params
-        }
-
-        axios.get(url, option).then((res) => {
-            store.searchSeries = res.data.results
-        })
-
-
-
-    },
-    getFilms() {
-        let url = store.baseUrl + store.endPoint.search + store.endPoint.movie;
-        let option= {}
-        let params= {}
-
-        for(let key in store.queryString){
-            if(store.queryString[key]){
-                params[key] = store.queryString[key]
-            }
-        }
-        console.log(store.queryString)
-        if(Object.keys(params).length > 0){
-            option.params = params
-        }
-
-        axios.get(url, option).then((res) => {
-            store.searchFilms = res.data.results 
-        });
-            
-
-        },
-    getData(){
-        store.show = true
-        this.getFilms();
-        this.getSeries()
-    }
+}
 })

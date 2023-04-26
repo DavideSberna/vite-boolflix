@@ -2,7 +2,15 @@
 
 <template>
     <div>
-        <allComponent/>
+ <!-- <header>
+        <NavComponent/>
+         </header> -->
+        <main>
+        <ContentComponent/>
+    </main>
+    <footer>
+        <FooterComponent/>
+    </footer>
     </div>
 </template>
 
@@ -10,23 +18,26 @@
 
 <script>
 import { store } from './data/store';
-import { activity } from './data/activity';
-import axios from 'axios';
-import allComponent from './components/allComponent.vue'
+// import { activity } from './data/activity';
+import ContentComponent from '../src/components/ContentComponent.vue';
+import FooterComponent from '../src/components/FooterComponent.vue';
+ 
+ 
 export default{
     name: 'App',
     components:{
-        allComponent,
+        ContentComponent,
+        FooterComponent,
     },
     data(){
         return{
             store,
-            activity,
+            
 
         }
     },
     mounted(){
-        activity.getFilms()
+       
     }
 
 }
@@ -39,6 +50,6 @@ export default{
  div{
     width: 100vw;
     height: 100vh;  
-    background-color: rgb(255, 179, 179);
+    background-color: rgb(67, 67, 67);
  }
 </style>
